@@ -7,12 +7,15 @@ const cssnano = require('cssnano');
 const htmlmin = require('gulp-htmlmin');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
-const replace = require('gulp-replace');
+const cachebust = require('gulp-cache-bust');
 const server = require('browser-sync').create();
+const imagemin = require('gulp-imagemin');
+
 
 const paths ={
   scssPath:'src/scss/**/*.scss',
-  jsPath:'src/js/**/*.js'
+  jsPath:'src/js/**/*.js',
+  imgPath:'src/img/**/**'
 }
 
 function scssTask(){    
@@ -38,6 +41,27 @@ function jsTask(){
       .pipe(gulp.dest('build/js')
   );
 }
+function imagesOptimization(){
+  return gulp.src(paths.imgPath)
+          .pipe(imagemin([
+            imagemin.gifsicle({interlaced: true}),
+            imagemin.jpegtran({progressive: true}),
+            imagemin.optipng({optimizationLevel: 5}),
+            imagemin.svgo()
+          ]))
+          .pipe(gulp.dest('build/img'));
+}
+
+
+
+function cache(){
+  return  gulp.src('build/**/*.html')
+          .pipe(cachebust({
+                type: 'timestamp'
+              }))
+          .pipe(gulp.dest('build'));
+}
+
 
 
 function watchTask(){
@@ -53,6 +77,6 @@ function watchTask(){
 }
 
 exports.default = gulp.series(
-  gulp.parallel(htmlTask,scssTask,jsTask), 
+  gulp.parallel(htmlTask,scssTask,jsTask,cache,imagesOptimization), 
   watchTask
 );

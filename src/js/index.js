@@ -1,4 +1,8 @@
+/*import {myAlert} from './modules/alert';
+
+
+let name = 'Jonh'
+
+myAlert(name)*/
+
 console.log('Hello World');
-alert('Hello');
-alert('hello again');
-alert('contructor js')

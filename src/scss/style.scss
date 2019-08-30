@@ -1,9 +1,9 @@
+//@import "config/variables";
 $bg-color:hsl(202, 79%, 26%);
 $color-text:#fff;
 $fs-h1:2.2em;
 $fs-h2:1.8em;
 $p-size:1.3em;
-
 body{
     background: $bg-color;
     color:$color-text;
@@ -17,6 +17,10 @@ h1{
     
     font-size: $fs-h1;
     font-weight: 600;
+}
+.img__banner{
+width: 30%;
+border-radius: 10px;
 }
 .container{
     background: darkcyan;
