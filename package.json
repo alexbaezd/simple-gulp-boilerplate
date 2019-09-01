@@ -4,24 +4,32 @@
   "description": "Boilerplate para proyectos web estaticos con gulp.js",
   "main": "index.js",
   "scripts": {
-    "start": "gulp",
+    "start": "gulp dev",
     "build": "gulp build"
   },
   "keywords": [],
   "author": "Alejandro Báez",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "autoprefixer": "^9.6.1",
+    "babelify": "^10.0.0",
     "browser-sync": "^2.26.7",
+    "browserify": "^16.5.0",
     "cssnano": "^4.1.10",
     "gulp": "^4.0.2",
-    "gulp-concat": "^2.6.1",
+    "gulp-babel": "^8.0.0-beta.2",
+    "gulp-cache-bust": "^1.4.1",
     "gulp-htmlmin": "^5.0.1",
+    "gulp-imagemin": "^6.1.0",
     "gulp-postcss": "^8.0.0",
     "gulp-replace": "^1.0.0",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
-    "gulp-uglify": "^3.0.2"
+    "gulp-uglify": "^3.0.2",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {}
 }
