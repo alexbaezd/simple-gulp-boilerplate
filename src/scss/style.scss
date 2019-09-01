@@ -1,9 +1,7 @@
-//@import "config/variables";
-$bg-color:hsl(202, 79%, 26%);
-$color-text:#fff;
-$fs-h1:2.2em;
-$fs-h2:1.8em;
-$p-size:1.3em;
+@import "config/variables";
+@import "theme/colors";
+@import "theme/typography";
+
 body{
     background: $bg-color;
     color:$color-text;
@@ -14,10 +12,16 @@ body{
 }
 
 h1{
-    
     font-size: $fs-h1;
+    color: $color-h1;
     font-weight: 600;
 }
+p{ 
+  font-size: $fs-p; 
+  background: $second-color;
+}
+
+
 .img__banner{
 width: 30%;
 border-radius: 10px;
@@ -34,7 +38,7 @@ footer{
 
     width: 100%;
     height: 5vh;
-    background: lightcoral;
+    background: $bg-color-alt;
     padding-top: 10px;
     margin-top: 10px;
 }
