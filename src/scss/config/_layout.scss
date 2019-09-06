@@ -1,0 +1,22 @@
+.img__banner{
+  width: 90%;
+  border-radius: 10px;
+  }
+  .container{
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 90%;
+  }
+  .row{
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  }
+  .col {
+    float: left;
+    box-sizing: border-box;
+    padding: 0 .75rem;
+    min-height: 1px;
+  }
+  
+  @include cols;

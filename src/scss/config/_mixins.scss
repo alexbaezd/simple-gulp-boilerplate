@@ -1,0 +1,7 @@
+@mixin cols {
+  @for $i from  1 through 12{
+      .s#{$i} {
+          width: columns($i,12);
+      }
+  }
+} 

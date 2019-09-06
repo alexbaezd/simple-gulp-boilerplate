@@ -1,0 +1,21 @@
+/* sass example */
+body {
+  background: $bg-color-alt;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-size: $fs-h1;
+  font-weight: 600;
+}
+p {
+  font-size: $fs-p;
+}
+li {
+  list-style-image: url("../img/favicon.png");
+  list-style-position: outside;
+  line-height: 1.5rem;
+}

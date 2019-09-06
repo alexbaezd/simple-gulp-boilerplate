@@ -4,7 +4,7 @@
   "description": "Boilerplate para proyectos web estaticos con gulp.js",
   "main": "index.js",
   "scripts": {
-    "start": "gulp dev",
+    "dev": "gulp dev",
     "build": "gulp build"
   },
   "keywords": [],

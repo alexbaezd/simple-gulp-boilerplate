@@ -1,44 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 @import "config/variables";
+@import "config/functions";
+@import "config/mixins";
 @import "theme/colors";
+@import "base/base";
+@import "config/layout";
 @import "theme/typography";
 
-body{
-    background: $bg-color;
-    color:$color-text;
-    box-sizing: border-box;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding: 0;
-    margin: 0;
-}
-
-h1{
-    font-size: $fs-h1;
-    color: $color-h1;
-    font-weight: 600;
-}
-p{ 
-  font-size: $fs-p; 
-  background: $second-color;
-}
 
 
-.img__banner{
-width: 30%;
-border-radius: 10px;
-}
-.container{
-    background: darkcyan;
-    padding: 20px;
-    width: 30%;
-    border-radius: 8px;
-    margin: 0 auto;
-}
 
-footer{
-
-    width: 100%;
-    height: 5vh;
-    background: $bg-color-alt;
-    padding-top: 10px;
-    margin-top: 10px;
-}
