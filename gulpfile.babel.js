@@ -20,7 +20,7 @@ const filesDev = {
   js: "src/js/**/*.js",
   img: "src/img/*"
 }
-const filesDest = "./build";
+const filesDest = "./build"
 
 const scssTaskDev = () => {
   return gulp
@@ -29,7 +29,7 @@ const scssTaskDev = () => {
     .pipe(sass({ outputStyle: "expanded" }).on("error", sass.logError))
     .pipe(sourcemaps.write("."))
     .pipe(gulp.dest(`${filesDest}/css`))
-    .pipe(server.stream({ match: "**/*.css" }));
+    .pipe(server.stream({ match: "**/*.css" }))
 }
 
 const scssTaskBuild = () => {
@@ -39,24 +39,24 @@ const scssTaskBuild = () => {
     .pipe(sass())
     .pipe(postcss([autoprefixer(), cssnano()]))
     .pipe(sourcemaps.write("."))
-    .pipe(gulp.dest(`${filesDest}/css`));
+    .pipe(gulp.dest(`${filesDest}/css`))
 }
 
 const jsTaskDev = () => {
   return browserify({
     entries: ["./src/js/main.js"],
     transform: ["babelify"]
-    })
+  })
     .bundle()
     .on("error", function(err) {
-      console.error(err);
-      this.emit("end");
+      console.error(err)
+      this.emit("end")
     })
     .pipe(source("app.js"))
     .pipe(buffer())
     .pipe(sourcemaps.init())
     .pipe(sourcemaps.write("."))
-    .pipe(gulp.dest(`${filesDest}/js`));
+    .pipe(gulp.dest(`${filesDest}/js`))
 }
 
 const jsTaskBuild = () => {
@@ -66,29 +66,29 @@ const jsTaskBuild = () => {
   })
     .bundle()
     .on("error", function(err) {
-      console.error(err);
-      this.emit("end");
+      console.error(err)
+      this.emit("end")
     })
     .pipe(source("app.js"))
     .pipe(buffer())
     .pipe(sourcemaps.init())
     .pipe(uglify())
     .pipe(sourcemaps.write("."))
-    .pipe(gulp.dest(`${filesDest}/js`));
+    .pipe(gulp.dest(`${filesDest}/js`))
 }
 
 const htmlTaskDev = () => {
   return gulp
     .src("src/*.html")
     .pipe(htmlmin({ collapseWhitespace: false }))
-    .pipe(gulp.dest(filesDest));
+    .pipe(gulp.dest(filesDest))
 }
 
 const htmlTaskBuild = () => {
   return gulp
     .src("src/*.html")
     .pipe(htmlmin({collapseWhitespace: true,removeComments: true }))
-    .pipe(gulp.dest(filesDest));
+    .pipe(gulp.dest(filesDest))
 }
 
 const imgSquooshTask = () => {
@@ -102,7 +102,7 @@ const imgSquooshTask = () => {
         imagemin.svgo()
       ])
     )
-    .pipe(gulp.dest(`${filesDest}/img`));
+    .pipe(gulp.dest(`${filesDest}/img`))
 }
 
 const cache = () => {
@@ -113,7 +113,7 @@ const cache = () => {
         type: "timestamp"
       })
     )
-    .pipe(gulp.dest(filesDest));
+    .pipe(gulp.dest(filesDest))
 }
 
 const watchTask = () => {
@@ -121,14 +121,14 @@ const watchTask = () => {
     server: {
       baseDir: "./build"
     }
-  });
-  gulp.watch(filesDev.scss, scssTaskDev);
-  gulp.watch("src/*.html", htmlTaskDev).on("change", server.reload);
-  gulp.watch(filesDev.js, jsTaskDev).on("change", server.reload);
+  })
+  gulp.watch(filesDev.scss, scssTaskDev)
+  gulp.watch("src/*.html", htmlTaskDev).on("change", server.reload)
+  gulp.watch(filesDev.js, jsTaskDev).on("change", server.reload)
 }
 
 exports.dev = gulp.series(
-  gulp.parallel(htmlTaskDev, scssTaskDev, jsTaskDev, imgSquooshTask),
+  gulp.parallel(htmlTaskDev, scssTaskDev, jsTaskDev, cache),
   watchTask
 )
 
