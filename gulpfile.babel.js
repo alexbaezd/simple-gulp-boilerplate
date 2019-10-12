@@ -14,6 +14,7 @@ const buffer = require("vinyl-buffer");
 const babelify = require("babelify");
 const source = require("vinyl-source-stream");
 const server = require("browser-sync").create();
+const del = require('del');
 
 const filesDev = {
   scss: "src/scss/**/*.scss",
@@ -87,7 +88,7 @@ const htmlTaskDev = () => {
 const htmlTaskBuild = () => {
   return gulp
     .src("src/*.html")
-    .pipe(htmlmin({collapseWhitespace: true,removeComments: true }))
+    .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest(filesDest))
 }
 
@@ -116,6 +117,9 @@ const cache = () => {
     .pipe(gulp.dest(filesDest))
 }
 
+const clean = () =>{
+  return del(["./build/"])
+}
 const watchTask = () => {
   server.init({
     server: {
@@ -132,7 +136,7 @@ exports.dev = gulp.series(
   watchTask
 )
 
-exports.build = gulp.series(
+exports.build = gulp.series(clean,
   gulp.parallel(
     htmlTaskBuild,
     scssTaskBuild,
